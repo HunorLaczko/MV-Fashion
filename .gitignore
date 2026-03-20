@@ -44,6 +44,5 @@ yarn-error.log*
 next-env.d.ts
 
 .agents
-package-lock.json
 images_bak/
 eslint_src_latest.txt
