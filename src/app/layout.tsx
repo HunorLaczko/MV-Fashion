@@ -26,14 +26,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MV-Fashion Dataset",
     description: "A large-scale, multi-view video dataset engineered for domain-specific fashion analysis featuring synchronized captures of worn garments alongside corresponding flat catalogue images.",
-    images: [withBasePath('/images/og-teaser.webp')],
+    images: ['/images/og-teaser.webp'],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "MV-Fashion Dataset",
     description: "A large-scale, multi-view video dataset engineered for domain-specific fashion analysis.",
-    images: [withBasePath('/images/og-teaser.webp')],
+    images: ['/images/og-teaser.webp'],
   },
 }
 
@@ -76,7 +76,7 @@ export default function RootLayout({
             "citation": "https://arxiv.org/abs/2603.08147",
             "distribution": {
               "@type": "DataDownload",
-              "contentUrl": `${getSiteUrl()}${withBasePath('/request-data/')}`,
+              "contentUrl": `${getSiteUrl()}/request-data/`,
               "encodingFormat": "text/html"
             },
             "creator": [
