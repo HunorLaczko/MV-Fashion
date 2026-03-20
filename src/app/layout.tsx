@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: "MV-Fashion: Towards Enabling Virtual Try-On and Size Estimation with Multi-View Paired Data",
   description: "A large-scale, multi-view video dataset engineered for domain-specific fashion analysis featuring synchronized captures of worn garments alongside corresponding flat catalogue images.",
-  manifest: withBasePath("/manifest.json"),
+  manifest: `${getSiteUrl()}/manifest.json`,
   openGraph: {
     title: "MV-Fashion Dataset",
     description: "A large-scale, multi-view video dataset engineered for domain-specific fashion analysis featuring synchronized captures of worn garments alongside corresponding flat catalogue images.",

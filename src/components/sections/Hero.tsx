@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Database, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+
 import { withBasePath } from "@/lib/basePath";
 
 export function Hero() {
@@ -102,12 +102,11 @@ export function Hero() {
                 >
                     <div className="absolute inset-x-0 bottom-0 h-[15%] bg-gradient-to-t from-slate-50/40 dark:from-slate-950/40 to-transparent z-10 pointer-events-none" />
                     <div className="flex flex-row items-center justify-between w-full rounded-lg bg-white dark:bg-black/40 overflow-hidden xl:max-h-[600px]">
-                        <Image
+                        <img
                             src={withBasePath('/images/hero/hero_left.webp')}
                             alt="MV-Fashion Left Part"
                             width={667}
                             height={1000}
-                            priority
                             className="w-1/3 h-auto object-contain"
                         />
                         <video
@@ -120,12 +119,11 @@ export function Hero() {
                             poster={withBasePath('/images/hero/hero_poster.webp')}
                             className="w-1/3 h-auto object-contain"
                         />
-                        <Image
+                        <img
                             src={withBasePath('/images/hero/hero_right.webp')}
                             alt="MV-Fashion Right Part"
                             width={667}
                             height={1000}
-                            priority
                             className="w-1/3 h-auto object-contain"
                         />
                     </div>

@@ -16,6 +16,7 @@ concurrency:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
 
 jobs:
   build:

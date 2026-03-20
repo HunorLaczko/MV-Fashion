@@ -1,8 +1,8 @@
 "use client";
 
+import { withBasePath } from "@/lib/basePath";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { withBasePath } from "@/lib/basePath";
 
 export function Abstract() {
     return (
@@ -36,7 +36,7 @@ export function Abstract() {
                         className="relative rounded-2xl overflow-hidden glass flex items-center justify-center bg-white dark:bg-slate-900/50 p-2 border border-slate-200 dark:border-white/10"
                     >
                         <Image
-                            src={withBasePath('/images/annotations.webp')}
+                            src="/images/annotations.webp"
                             alt="MV-Fashion Annotations Overview"
                             width={1000}
                             height={500}
