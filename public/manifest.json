@@ -1,0 +1,16 @@
+{
+  "name": "MV-Fashion Dataset",
+  "short_name": "MV-Fashion",
+  "description": "Towards Enabling Virtual Try-On and Size Estimation with Multi-View Paired Data",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
