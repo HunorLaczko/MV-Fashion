@@ -1,45 +1,45 @@
 "use client";
 
+import { withBasePath } from "@/lib/basePath";
 import { motion } from "framer-motion";
 import Image from "next/image";
-
 
 const highlightItems = [
     {
         title: "Diverse Poses",
         description: "Capturing a wide range of natural and complex human motions.",
         color: "from-blue-500/20 to-cyan-500/20",
-        image: '/images/highlights/multi_poses.webp'
+        image: withBasePath('/images/highlights/multi_poses.webp')
     },
     {
         title: "Layered Outfits",
         description: "Intricate details of multi-layered clothing combinations.",
         color: "from-rose-500/20 to-orange-500/20",
-        image: '/images/highlights/multi_layers.webp'
+        image: withBasePath('/images/highlights/multi_layers.webp')
     },
     {
         title: "Multi-view Consistency",
         description: "Synchronized capture ensuring perfect alignment across all views.",
         color: "from-emerald-500/20 to-teal-500/20",
-        image: '/images/highlights/multiview.webp'
+        image: withBasePath('/images/highlights/multiview.webp')
     },
     {
         title: "Paired Data",
         description: "Catalogue domain image pairs for the multi-view recordings for VTON.",
         color: "from-purple-500/20 to-pink-500/20",
-        image: '/images/highlights/paired.webp'
+        image: withBasePath('/images/highlights/paired.webp')
     },
     {
         title: "Challenging Garments",
         description: "Includes difficult items like loose dresses and transparent fabrics.",
         color: "from-amber-500/20 to-yellow-500/20",
-        image: '/images/highlights/challenging_outfits.webp'
+        image: withBasePath('/images/highlights/challenging_outfits.webp')
     },
     {
         title: "Robust Tracking",
         description: "Accurate SMPL-X fitting and tracking.",
         color: "from-indigo-500/20 to-violet-500/20",
-        image: '/images/highlights/smplx.webp'
+        image: withBasePath('/images/highlights/smplx.webp')
     },
 ];
 

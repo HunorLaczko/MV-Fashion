@@ -1,16 +1,16 @@
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+import { BASE_PATH, SITE_URL } from './basePath.generated';
 
 export function withBasePath(path: string): string {
-  if (!path) return basePath || "/";
+  if (!path) return BASE_PATH || '/';
 
-  if (/^https?:\/\//i.test(path) || path.startsWith("//")) {
+  if (/^https?:\/\//i.test(path) || path.startsWith('//')) {
     return path;
   }
 
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  return `${basePath}${normalizedPath}`;
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  return `${BASE_PATH}${normalizedPath}`;
 }
 
 export function getSiteUrl(): string {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "https://hunorlaczko.github.io/MV-Fashion";
+  return SITE_URL;
 }

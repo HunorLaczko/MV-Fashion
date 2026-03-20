@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-
+import { withBasePath } from "@/lib/basePath";
 
 interface TeamMember {
     name: string;
@@ -70,13 +70,13 @@ export function Team() {
             name: "Hunor Laczkó",
             link: "https://www.linkedin.com/in/hunor-laczko/",
             github: "HunorLaczko",
-            photo: '/images/team/hl.webp'
+            photo: withBasePath('/images/team/hl.webp')
         },
         {
             name: "Libang Jia",
             link: "https://www.linkedin.com/in/libang-jia-13683b360/",
             github: "jialibang",
-            photo: '/images/team/lj.webp'
+            photo: withBasePath('/images/team/lj.webp')
         },
         {
             name: "Loc-Phat Truong",
@@ -92,19 +92,19 @@ export function Team() {
             name: "Sergio Escalera",
             link: "https://scholar.google.com/citations?user=oI6AIkMAAAAJ",
             github: "sergio-escalera",
-            photo: '/images/team/se.webp'
+            photo: withBasePath('/images/team/se.webp')
         },
         {
             name: "Jordi Gonzàlez",
             link: "https://scholar.google.com/citations?user=Lphp7WUAAAAJ",
             github: "jordi-gonzalez",
-            photo: '/images/team/jg.webp'
+            photo: withBasePath('/images/team/jg.webp')
         },
         {
             name: "Meysam Madadi",
             link: "https://scholar.google.com/citations?user=hWMXdg4AAAAJ",
             github: "meysam-madadi",
-            photo: '/images/team/mm.webp'
+            photo: withBasePath('/images/team/mm.webp')
         }
     ];
 
