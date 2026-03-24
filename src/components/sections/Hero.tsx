@@ -30,6 +30,10 @@ export function Hero() {
                         MV-Fashion: Towards Enabling Virtual Try-On and Size Estimation with Multi-View Paired Data
                     </h1>
 
+                    <div className="text-xl md:text-2xl font-semibold tracking-wide text-slate-600 dark:text-slate-300 mb-6 font-display">
+                        CVPR 2026
+                    </div>
+
                     <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-slate-700 dark:text-slate-300 mb-8 md:mb-12 text-sm sm:text-base md:text-lg">
                         <a href="https://scholar.google.com/citations?user=RfLjJigAAAAJ" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Hunor Laczkó</a>
                         <span className="text-slate-400 dark:text-slate-600">•</span>
