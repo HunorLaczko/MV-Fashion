@@ -9,15 +9,25 @@ import { withBasePath } from "@/lib/basePath";
 
 export default function RequestDataPage() {
     const { resolvedTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
     const embedTimeoutRef = useRef<number | null>(null);
     const [embedError, setEmbedError] = useState(false);
     const [embedLoaded, setEmbedLoaded] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const formId = resolvedTheme === "dark" ? "EkPkM2" : "KY05eg";
     const tallyEmbedUrl = `https://tally.so/embed/${formId}?alignLeft=1&hideTitle=1&transparentBackground=0`;
     const tallyDirectUrl = `https://tally.so/r/${formId}`;
 
     useEffect(() => {
+        if (!mounted) return;
+
+        setEmbedError(false);
+        setEmbedLoaded(false);
+
         embedTimeoutRef.current = window.setTimeout(() => {
             setEmbedError(true);
         }, 12000);
@@ -28,7 +38,7 @@ export default function RequestDataPage() {
                 embedTimeoutRef.current = null;
             }
         };
-    }, [resolvedTheme]);
+    }, [mounted, resolvedTheme]);
 
     return (
         <main id="main-content" className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
@@ -100,6 +110,7 @@ export default function RequestDataPage() {
                     </div>
 
                     <div className="w-full overflow-visible" key={resolvedTheme ?? "light"}>
+                        {mounted ? (
                         <iframe
                             src={tallyEmbedUrl}
                             loading="lazy"
@@ -123,6 +134,9 @@ export default function RequestDataPage() {
                                 setEmbedError(true);
                             }}
                         />
+                        ) : (
+                        <div style={{ height: '1030px' }} className="animate-pulse bg-slate-100 dark:bg-slate-800 rounded-xl" />
+                        )}
 
                         {embedError && !embedLoaded && (
                             <div className="rounded-xl border border-rose-300 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/30 p-6 space-y-4">
