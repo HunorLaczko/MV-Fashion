@@ -34,7 +34,7 @@ export function Hero() {
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 text-slate-700 dark:text-slate-300 mb-8 md:mb-12 text-sm sm:text-base md:text-lg">
-                        <a href="https://scholar.google.com/citations?user=RfLjJigAAAAJ" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Hunor Laczkó</a>
+                        <a href="https://www.linkedin.com/in/hunor-laczko/" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Hunor Laczkó</a>
                         <span className="text-slate-400 dark:text-slate-600">•</span>
                         <a href="https://scholar.google.com/scholar?q=Libang+Jia" target="_blank" rel="noopener noreferrer" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Libang Jia</a>
                         <span className="text-slate-400 dark:text-slate-600">•</span>
@@ -110,6 +110,15 @@ export function Hero() {
                                 <path d="M9 18c-4.51 2-5-2-7-2" />
                             </svg>
                             GitHub
+                        </a>
+
+                        <a
+                            href="https://openaccess.thecvf.com/content/CVPR2026/html/Laczko_MV-Fashion_Towards_Enabling_Virtual_Try-On_and_Size_Estimation_with_Multi-View_CVPR_2026_paper.html"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-slate-700 bg-white border border-slate-200 rounded-full hover:bg-slate-50 hover:border-indigo-300 dark:text-indigo-100 transition-all duration-200 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10 dark:hover:border-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-200 dark:focus:ring-slate-800 shadow-sm dark:shadow-none hover:scale-105"
+                        >
+                            OpenAccess
                         </a>
                     </div>
                 </motion.div>
