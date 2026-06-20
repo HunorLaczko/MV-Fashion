@@ -7,14 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 export function Citation() {
     const [copied, setCopied] = useState(false);
 
-    const bibtex = `@misc{laczko2026mvfashionenablingvirtualtryon,
-      title={MV-Fashion: Towards Enabling Virtual Try-On and Size Estimation with Multi-View Paired Data}, 
-      author={Hunor Laczkó and Libang Jia and Loc-Phat Truong and Diego Hernández and Sergio Escalera and Jordi Gonzalez and Meysam Madadi},
-      year={2026},
-      eprint={2603.08147},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2603.08147},
+    const bibtex = `@InProceedings{Laczko_2026_CVPR,
+    author    = {Laczk\'o, Hunor and Jia, Libang and Truong, Loc-Phat and Hern\'andez, Diego and Escalera, Sergio and Gonzalez, Jordi and Madadi, Meysam},
+    title     = {MV-Fashion: Towards Enabling Virtual Try-On and Size Estimation with Multi-View Paired Data},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {42810-42823}
 }`;
 
     const copyToClipboard = () => {
