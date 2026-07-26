@@ -121,6 +121,46 @@ def _image_subplot(fig, frame, row, col, title, rows=1, cols=1):
     fig.update_yaxes(visible=False, row=row + 1, col=col + 1)
 
 
+def _frame_for_mask(mask_path: Path) -> Optional[Path]:
+    """Resolve the RGB frame that corresponds to a given mask path.
+
+    Mask paths are expected to be absolute (as produced by the dataset's
+    helper modules which anchor them at ``get_dataset_root()``). The matching
+    video path has the form::
+
+        <dataset_root>/videos/<subject>/<outfit>/<layer>/<sequence>/<camera>/<frame>.avif
+
+    The cloth_N segment only exists for garment masks, so we strip it.
+    """
+    parts = list(mask_path.parts)
+    # Find the "annotations/masks/<kind>" anchor in the absolute path.
+    try:
+        anchor = parts.index("annotations")
+    except ValueError:
+        return None
+    if anchor + 5 >= len(parts) or parts[anchor + 1] != "masks":
+        return None
+    kind = parts[anchor + 2]
+    if kind not in ("foreground", "garment"):
+        return None
+    subject = parts[anchor + 3]
+    outfit = parts[anchor + 4]
+    layer = parts[anchor + 5]
+    sequence = parts[anchor + 6]
+    # After <sequence> we may have cloth_N (garment mask) or the camera name
+    # (foreground mask) before the camera dir.
+    tail = parts[anchor + 7:]
+    if tail and tail[0].startswith("cloth_"):
+        tail = tail[1:]  # drop cloth_N
+    if not tail or len(tail) < 2:
+        return None
+    camera = tail[0]
+    frame_stem = mask_path.stem
+    from paths import get_dataset_root
+    rel = Path("videos") / subject / outfit / layer / sequence / camera / f"{frame_stem}.avif"
+    return get_dataset_root() / rel
+
+
 def visualize_undistortion(
     subject: str,
     outfit: str,
@@ -301,13 +341,13 @@ def visualize_masks(
     )
 
     palette = [
-        "rgb(255, 80, 80)",    # red
-        "rgb(80, 200, 80)",   # green
-        "rgb(80, 130, 255)",  # blue
-        "rgb(255, 200, 80)",  # orange
-        "rgb(220, 80, 220)",  # magenta
-        "rgb(80, 220, 220)",  # cyan
-        "rgb(255, 130, 200)", # pink
+        np.array([255,  80,  80], dtype=np.uint8),  # red
+        np.array([ 80, 200,  80], dtype=np.uint8),  # green
+        np.array([ 80, 130, 255], dtype=np.uint8),  # blue
+        np.array([255, 200,  80], dtype=np.uint8),  # orange
+        np.array([220,  80, 220], dtype=np.uint8),  # magenta
+        np.array([ 80, 220, 220], dtype=np.uint8),  # cyan
+        np.array([255, 130, 200], dtype=np.uint8),  # pink
     ]
 
     n_cols = max(len(eligible_cloth_nums), 1) + 1  # +1 for the foreground column
@@ -341,9 +381,8 @@ def visualize_masks(
         fg_mask = np.array(Image.open(fg_mask_path))
         # Try to find a frame for overlay
         frame = None
-        frame_candidate = Path(str(fg_mask_path).replace("annotations/masks/foreground/", "videos/"))
-        frame_candidate = frame_candidate.with_name(f"{frame_idx:05d}.avif")
-        if frame_candidate.is_file():
+        frame_candidate = _frame_for_mask(fg_mask_path)
+        if frame_candidate is not None and frame_candidate.is_file():
             try:
                 frame = np.array(Image.open(frame_candidate))
             except Exception:
@@ -417,9 +456,8 @@ def visualize_masks(
         mask = np.array(Image.open(mask_path))
         # Try to find a frame for overlay
         frame = None
-        frame_candidate = Path(str(mask_path).replace("annotations/masks/garment/", "videos/"))
-        frame_candidate = frame_candidate.with_name(f"{frame_idx:05d}.avif")
-        if frame_candidate.is_file():
+        frame_candidate = _frame_for_mask(mask_path)
+        if frame_candidate is not None and frame_candidate.is_file():
             try:
                 frame = np.array(Image.open(frame_candidate))
             except Exception:
@@ -435,12 +473,11 @@ def visualize_masks(
                         (frame.shape[1], frame.shape[0]), Image.NEAREST
                     )
                 )
-            color_rgb = palette[(col_idx - 1) % len(palette)]
-            r, g, b = int(color_rgb[4:6], 16), int(color_rgb[7:9], 16), int(color_rgb[10:12], 16)
+            color = palette[(col_idx - 1) % len(palette)]
             mask_bool = mask > 127
             overlay = frame.copy()
             overlay[mask_bool] = (
-                overlay[mask_bool] * 0.55 + np.array([r, g, b]) * 0.45
+                overlay[mask_bool] * 0.55 + color * 0.45
             ).astype(np.uint8)
             _image_subplot(fig, overlay, 1, col_idx, f"cloth_{cloth_num} overlay")
         else:
