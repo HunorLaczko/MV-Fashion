@@ -1,5 +1,10 @@
 # MV-Fashion Dataset Tools
 
+[![Paper](https://img.shields.io/badge/arXiv-2603.08147-b31b1b.svg)](https://arxiv.org/abs/2603.08147)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue.svg)](https://hunorlaczko.github.io/MV-Fashion/)
+[![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow.svg)](https://huggingface.co/datasets/MV-Fashion/MV-Fashion)
+[![License](https://img.shields.io/badge/License-Research_Use-lightgrey.svg)](#-license)
+
 Complete toolkit for downloading, processing, and analyzing the MV-Fashion dataset.
 
 ## 🚀 Quick Start
