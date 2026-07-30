@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { X, Star, AlertCircle } from "lucide-react";
+import { X, Download, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Banner() {
@@ -20,20 +20,20 @@ export function Banner() {
                 <div className="container mx-auto px-4 py-3 sm:px-6 lg:px-8">
                     <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
                         <div className="flex items-center gap-x-3 text-sm font-medium leading-6">
-                            <AlertCircle className="h-5 w-5 flex-none" aria-hidden="true" />
+                            <Sparkles className="h-5 w-5 flex-none" aria-hidden="true" />
                             <p>
-                                Dataset release coming soon, it&apos;s not available yet. Until then give us a star on GitHub so that we know we should hurry up!
+                                The dataset is available on Hugging Face!
                             </p>
                         </div>
                         <div className="flex flex-1 items-center justify-end gap-x-4">
                             <a
-                                href="https://github.com/HunorLaczko/MV-Fashion"
+                                href="https://huggingface.co/datasets/MV-Fashion/MV-Fashion"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center rounded-full bg-white/20 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-white/30 transition-colors"
                             >
-                                <Star className="h-4 w-4 mr-1.5" />
-                                Star on GitHub
+                                <Download className="h-4 w-4 mr-1.5" />
+                                Get Dataset
                             </a>
                             <button
                                 type="button"
